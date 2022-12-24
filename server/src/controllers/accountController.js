@@ -27,7 +27,7 @@ const accountController = {
         db.query(
           `insert into users (username, password) values ("${req.body.username}", "${hashedPassword}");`
         );
-        res.send('User registered.');
+        res.send({ msg: 'User registered.' });
       } catch (error) {
         res.status(500).send({ msg: 'Something went wrong', error });
       }
@@ -37,7 +37,7 @@ const accountController = {
     const user = await findUser(req.body.username);
 
     if (user == 0) {
-      req.status(400).send({ msg: 'This username does not exist' });
+      return res.status(400).send({ msg: 'This username does not exist' });
     }
     try {
       if (await bcrypt.compare(req.body.password, user[0].password)) {
