@@ -9,6 +9,34 @@
 </head>
 <body>
   <main>
+
+    <div id="navBar">
+      <div id="logout">
+        <img src="./assets/logout_icon.png" alt="logout" class="logoutIcon">
+        <span id="logoutText">Log out</span>
+      </div>
+    </div>
+
+    <div id="content">
+      <div id="calendar">
+        <div id="calendar-header">
+          <button class="year_picker" id="year-down">&#60</button>
+          <span id="calendar-year"></span>
+          <button class="year_picker" id="year-up">&#62</button>
+        </div>
+        <div id="week-days" class="calendar_body">
+          <div id="Monday" class="calendar_block calendar-wd">Mon</div>
+          <div id="Tuesday" class="calendar_block calendar-wd">Tue</div>
+          <div id="Wednesday" class="calendar_block calendar-wd">Wed</div>
+          <div id="Thursday" class="calendar_block calendar-wd">Thu</div>
+          <div id="Friday" class="calendar_block calendar-wd">Fri</div>
+          <div id="Saturday" class="calendar_block calendar-wd">Sat</div>
+          <div id="Sunday" class="calendar_block calendar-wd">Sun</div>
+        </div>
+        <div id="calendar-main" class="calendar_body">
+        </div>
+      </div>
+    </div>
     
   </main>
   <script src="calendar.js"></script>

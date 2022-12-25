@@ -3,11 +3,12 @@ body {
 }
 main {
   position: absolute;
-  background-color: rgb(128, 194, 255);
+  background: linear-gradient(to bottom right, rgb(38, 132, 255), #6bfdff);
   width: 100%;
-  height: 100%;
+  height: auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 /* login stuff */
 main#loginMain {
@@ -66,4 +67,124 @@ div#buttons {
   left: 25%;
   bottom: -100%;
   cursor: pointer;
+}
+/* calendar stuff */
+div#navBar {
+  background-color: rgb(180, 219, 255);
+  margin-top: 1%;
+  border-radius: 25px;
+  box-shadow: 0 0.5vmin 0 rgb(72, 167, 255);
+  height: 10vmin;
+  width: 66%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+div#logout {
+  background-color: rgb(99, 99, 99);
+  border: 0.6vh solid black;
+  border-radius: 25px;
+  right: 2.5%;
+  height: 70%;
+  width: 12%;
+  display: flex;
+  cursor: pointer;
+}
+.logoutIcon{
+  max-width: 100%;
+  max-height: 100%;
+}
+#logoutText{
+  color: white;
+  overflow: hidden;
+  font-size: 5vmin;
+  text-align: center;
+}
+div#content {
+  align-self: stretch;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+  scroll-behavior:smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+#content::-webkit-scrollbar {
+  display: none;
+}
+div#calendar {
+  box-shadow: inset 0 0 4vmin 0.2vmin rgb(0, 0, 0);
+  border-radius: 25px;
+  padding: 2%;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#calendar-header {
+  height: 9vmin;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4%;
+  overflow: hidden;
+}
+#calendar-year {
+  color: white;
+  font-family:sans-serif;
+  font-size: 6.5vmin;
+  font-weight: 600;
+  -webkit-text-stroke: 0.4vmin black;
+  width: 38%;
+  text-align: center;
+  cursor: pointer;
+}
+.year_picker {
+  aspect-ratio: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 8vmin;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  -webkit-text-stroke: 0.4vmin black;
+}
+.calendar_body{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  row-gap: 2%;
+}
+#week-days{
+  height: 7vmin;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.calendar_block{
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
+  aspect-ratio: 1.4;
+  width: 13%;
+  margin-left: 1%;
+}
+.on_block {
+  background-color: rgb(255, 255, 255);
+  box-shadow: inset 0 0 4vmin 0.2vmin rgb(163, 163, 163);
+  cursor: pointer;
+
+}
+.off_block {
+  background-color: rgb(105, 105, 105);
+  box-shadow: inset 0 0 10vmin 0.2vmin rgb(0, 0, 0);
+}
+.calendar-wd{
+  background-color: rgb(255, 255, 255);
+  box-shadow: inset 0 0 4vmin 0.2vmin rgb(137, 137, 137);
+  border-radius: 10px;
+  aspect-ratio: 4;
+  font-size: 4vmin;
 }

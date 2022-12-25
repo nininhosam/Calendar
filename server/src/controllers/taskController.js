@@ -1,8 +1,14 @@
 const db = require('../database');
 
 const taskController = {
+  async getAllTasks(req, res) {
+    db.query(`select * from tasks;`, (err, response) => {
+      if (err) res.status(500).send('something went wrong');
+      else res.send(response);
+    });
+  },
   async getTasks(req, res) {
-    db.query(`select * from tasks`, (err, response) => {
+    db.query(`select * from tasks where user = ${req.user.id};`, (err, response) => {
       if (err) res.status(500).send('something went wrong');
       else res.send(response);
     });
