@@ -5,6 +5,7 @@ main {
   position: absolute;
   background: linear-gradient(to bottom right, rgb(38, 132, 255), #6bfdff);
   width: 100%;
+  min-height: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -12,6 +13,7 @@ main {
 }
 /* login stuff */
 main#loginMain {
+  justify-content: center;
   align-items: center;
 }
 div#centered {
@@ -84,9 +86,9 @@ div#logout {
   background-color: rgb(99, 99, 99);
   border: 0.6vh solid black;
   border-radius: 25px;
-  right: 2.5%;
+  margin-right: 0.5%;
   height: 70%;
-  width: 12%;
+  width: 18%;
   display: flex;
   cursor: pointer;
 }
@@ -96,9 +98,9 @@ div#logout {
 }
 #logoutText{
   color: white;
-  overflow: hidden;
-  font-size: 5vmin;
+  font-size: 4.5vmin;
   text-align: center;
+  align-self: center;
 }
 div#content {
   align-self: stretch;
@@ -115,7 +117,7 @@ div#content {
   display: none;
 }
 div#calendar {
-  box-shadow: inset 0 0 4vmin 0.2vmin rgb(0, 0, 0);
+  box-shadow: inset 0 0 4vmin 0.2vmin rgb(0, 0, 0), 0 2 4vmin 0.2 gray;
   border-radius: 25px;
   padding: 2%;
   width: 70%;
@@ -140,7 +142,11 @@ div#calendar {
   -webkit-text-stroke: 0.4vmin black;
   width: 38%;
   text-align: center;
-  cursor: pointer;
+}
+#calendar-year:hover {
+  cursor: pointer; 
+  transform: scale(1.1); 
+  transition: all 0.2s ease-in-out;
 }
 .year_picker {
   aspect-ratio: 1;
@@ -163,19 +169,26 @@ div#calendar {
   height: 7vmin;
   flex-shrink: 0;
   overflow: hidden;
+  text-align: center;
 }
 .calendar_block{
   margin-top: 0.5%;
   margin-bottom: 0.5%;
   aspect-ratio: 1.4;
+  border-radius: 25px;
   width: 13%;
   margin-left: 1%;
 }
 .on_block {
   background-color: rgb(255, 255, 255);
   box-shadow: inset 0 0 4vmin 0.2vmin rgb(163, 163, 163);
-  cursor: pointer;
-
+  display: flex;
+  flex-direction: column;
+}
+.on_block:hover {
+    cursor: pointer; 
+    transform: scale(1.2); 
+    transition: all 0.5s ease-in-out;
 }
 .off_block {
   background-color: rgb(105, 105, 105);
@@ -187,4 +200,18 @@ div#calendar {
   border-radius: 10px;
   aspect-ratio: 4;
   font-size: 4vmin;
+}
+.txt_day {
+  font-size: 4vmin;
+  font-weight: 600;
+  text-align:center;
+  border-radius: 25px 25px 0 0;
+}
+.tasks {
+  flex-grow: 1;
+  border-radius: 0 0 25px 25px;
+  display: flex;
+  gap: 5%;
+  flex-wrap: wrap;
+  justify-content: center;
 }
