@@ -92,11 +92,11 @@ div#logout {
   display: flex;
   cursor: pointer;
 }
-.logoutIcon{
+.logoutIcon {
   max-width: 100%;
   max-height: 100%;
 }
-#logoutText{
+#logoutText {
   color: white;
   font-size: 4.5vmin;
   text-align: center;
@@ -109,7 +109,7 @@ div#content {
   justify-content: center;
   align-items: center;
   padding: 1%;
-  scroll-behavior:smooth;
+  scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -136,7 +136,7 @@ div#calendar {
 }
 #calendar-year {
   color: white;
-  font-family:sans-serif;
+  font-family: sans-serif;
   font-size: 6.5vmin;
   font-weight: 600;
   -webkit-text-stroke: 0.4vmin black;
@@ -144,8 +144,8 @@ div#calendar {
   text-align: center;
 }
 #calendar-year:hover {
-  cursor: pointer; 
-  transform: scale(1.1); 
+  cursor: pointer;
+  transform: scale(1.1);
   transition: all 0.2s ease-in-out;
 }
 .year_picker {
@@ -155,23 +155,23 @@ div#calendar {
   cursor: pointer;
   color: white;
   font-size: 8vmin;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   -webkit-text-stroke: 0.4vmin black;
 }
-.calendar_body{
+.calendar_body {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
   row-gap: 2%;
 }
-#week-days{
+#week-days {
   height: 7vmin;
   flex-shrink: 0;
   overflow: hidden;
   text-align: center;
 }
-.calendar_block{
+.calendar_block {
   margin-top: 0.5%;
   margin-bottom: 0.5%;
   aspect-ratio: 1.4;
@@ -186,15 +186,15 @@ div#calendar {
   flex-direction: column;
 }
 .on_block:hover {
-    cursor: pointer; 
-    transform: scale(1.2); 
-    transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all 0.5s ease-in-out;
 }
 .off_block {
   background-color: rgb(105, 105, 105);
   box-shadow: inset 0 0 10vmin 0.2vmin rgb(0, 0, 0);
 }
-.calendar-wd{
+.calendar-wd {
   background-color: rgb(255, 255, 255);
   box-shadow: inset 0 0 4vmin 0.2vmin rgb(137, 137, 137);
   border-radius: 10px;
@@ -204,7 +204,7 @@ div#calendar {
 .txt_day {
   font-size: 4vmin;
   font-weight: 600;
-  text-align:center;
+  text-align: center;
   border-radius: 25px 25px 0 0;
 }
 .tasks {
@@ -214,4 +214,143 @@ div#calendar {
   gap: 5%;
   flex-wrap: wrap;
   justify-content: center;
+}
+.overlay {
+  background-color: rgb(0, 0, 0, 0.6);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+#main-popup {
+  background-color: rgb(255, 255, 255);
+  box-shadow: inset 0 0 20vmin 0 gray;
+  border-radius: 25px;
+  aspect-ratio: 0.85;
+  width: 70vmin;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+#popup-title {
+  background-color: red;
+  color: white;
+  border-radius: 25px 25px 0 0;
+  height: 15%;
+  text-align: center;
+  font-size: 10vmin;
+}
+#popup-tasks {
+  margin-top: 1%;
+  border-radius: 0 0 25px 25px;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 1.5%;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+#popup-tasks::-webkit-scrollbar {
+  display: none;
+}
+.popup_task {
+  box-shadow: inset 0 0 5vmin 0 darkgray;
+  border-radius: 15px;
+  min-height: 10%;
+  display: flex;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.popup_task:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  transition: all 0.1s ease-in-out;
+}
+#popup-task-txt {
+  font-size: 5vmin;
+  text-align: center;
+  margin: 1%;
+  flex-grow: 1;
+  max-width: 80%;
+  word-break: break-all;
+}
+#popup-task-time {
+  box-shadow: 0.2vmin 0 1vmin black;
+  min-width: 20%;
+  font-size: 5.5vmin;
+  text-align: center;
+  flex-grow: 0;
+}
+#popup-add {
+  width: 95%;
+  align-self: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+#newTask {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 4vmin;
+  font-weight: 600;
+}
+button#newTask {
+  aspect-ratio: 1;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#overlay-2 {
+  z-index: 3;
+}
+#new-popup {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  box-shadow: inset 0 0 20vmin 0 gray;
+  border-radius: 25px;
+  aspect-ratio: 2;
+  width: 80vmin;
+  max-height: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.task_info {
+  height: 90%;
+  aspect-ratio: 1.4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8%;
+}
+.task_description {
+  height: 60%;
+  aspect-ratio: 2;
+  font-size: 4vmin;
+}
+.task_time {
+  aspect-ratio: 4;
+  width: 40%;
+  font-size: 4vmin;
+}
+.create_task {
+  border-radius: 25px;
+  border: 0.6vmin solid black;
+  background-color: aquamarine;
+  box-shadow: inset -1vmin -1vmin 1vmin rgb(61, 124, 103);
+  font-size: 2.2vmin;
+  aspect-ratio: 1.4;
+  cursor: pointer;
 }
