@@ -11,6 +11,7 @@ main {
   flex-direction: column;
   align-items: center;
 }
+
 /* login stuff */
 main#loginMain {
   justify-content: center;
@@ -70,6 +71,7 @@ div#buttons {
   bottom: -100%;
   cursor: pointer;
 }
+
 /* calendar stuff */
 div#navBar {
   background-color: rgb(180, 219, 255);
@@ -215,6 +217,7 @@ div#calendar {
   flex-wrap: wrap;
   justify-content: center;
 }
+/* day tasks overlay */
 .overlay {
   background-color: rgb(0, 0, 0, 0.6);
   position: absolute;
@@ -310,7 +313,7 @@ button#newTask {
   border-radius: 25px;
   cursor: pointer;
 }
-
+/* new task overlay */
 #overlay-2 {
   z-index: 3;
 }
@@ -328,7 +331,6 @@ button#newTask {
   align-items: center;
 }
 .task_info {
-  background-color: red;
   height: 100%;
   aspect-ratio: 1.4;
   max-width: 70%;
@@ -349,7 +351,6 @@ button#newTask {
   font-size: 4vmin;
 }
 .task_specs {
-  background-color: blue;
   height: 100%;
   width: 30%;
   display: flex;
