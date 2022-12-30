@@ -52,8 +52,19 @@ const getTasks = async (auth, year, month) => {
     cache: 'default',
   }).then((res) => res.json());
 };
-const createTask = async (auth, body) => {
-  return fetch(`${server}/addTask`, {
+const getUser = async (auth, username) => {
+  return fetch(`${server}/getUser/${username}`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${auth}`,
+      Accept: 'application.json',
+      'Content-Type': 'application/json',
+    },
+    cache: 'default',
+  }).then((res) => res.json());
+};
+const createTask = async (type, auth, body) => {
+  return fetch(`${server}/${type}`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${auth}`,
@@ -183,6 +194,7 @@ const loadCalendar = async (year, month) => {
         }
       });
       popButton.addEventListener('click', () => {
+        // Overlay | Set Description | Set Time
         let overlay2 = createTag(
           'div',
           'overlay-2',
@@ -202,15 +214,62 @@ const loadCalendar = async (year, month) => {
         taskDesc.rows = 10;
         let taskTime = createTag('input', 'task-time', 'task_time', taskInfo);
         taskTime.type = 'time';
+
+        // Notify other users | create button
+        let taskSpecs = createTag('div', 'task-specs', 'task_specs', newPopup);
+        let otherUsersInp = createTag(
+          'input',
+          'other-users',
+          'other_users',
+          taskSpecs
+        );
+        otherUsersInp.type = `task`;
+        otherUsersInp.placeholder = `username`;
+        let otherUsersSel = createTag(
+          'select',
+          'other-users-sel',
+          'other_users',
+          taskSpecs
+        );
+        otherUsersSel.size = 3;
+
         let createTaskBtn = createTag(
           'input',
           'create-task',
           'create_task',
-          newPopup
+          taskSpecs
         );
         createTaskBtn.type = 'button';
         createTaskBtn.value = 'Create Task';
 
+        // Event listeners
+        otherUsersInp.addEventListener('keydown', (data) => {
+          if (data.key == 'Enter') {
+            let inputValue = otherUsersInp.value;
+            if (
+              inputValue != '' &&
+              !document.querySelector(`option#opt-${inputValue}`)
+            ) {
+              let opt = createTag(
+                'option',
+                `opt-${inputValue}`,
+                `option-user`,
+                otherUsersSel
+              );
+              opt.value = inputValue;
+              opt.innerHTML = inputValue;
+              otherUsersInp.value = '';
+            }
+          }
+        });
+        otherUsersSel.addEventListener('keydown', (data) => {
+          if (data.key == 'Delete') {
+            let opts = data.target;
+            for (i = 0; i < opts.childElementCount; i++) {
+              if (opts[i].selected) opts[i].remove();
+            }
+          }
+        });
         createTaskBtn.addEventListener('click', async () => {
           let timeInput = taskTime.value.split(':');
           let timeInMinute = 0;
@@ -228,8 +287,30 @@ const loadCalendar = async (year, month) => {
             },
           };
 
-          let res = await createTask(accessToken, body);
-          console.log(res.msg);
+          let selfRes = await createTask('addTask', accessToken, body);
+
+          if (otherUsersSel.childElementCount != 0) {
+            for (i = 0; i < otherUsersSel.childElementCount; i++) {
+              let user = otherUsersSel[i].value;
+              let userRes = await getUser(accessToken, user);
+              if (userRes.length == 0) {
+                console.log('this user does not exist');
+              } else {
+                body = {
+                  description: `${desc}`,
+                  date: {
+                    year: year,
+                    month: month + 1,
+                    day: day,
+                    time: timeInMinute,
+                  },
+                  userId: userRes[0].id,
+                };
+                createTask('grantTask', accessToken, body);
+              }
+            }
+          }
+          console.log(selfRes.msg);
           calendarMain.innerHTML = '';
           loadCalendar(year, month);
           overlay2.remove();

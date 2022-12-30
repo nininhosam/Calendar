@@ -9,7 +9,7 @@ const taskController = {
   },
   async getMonthTasks(req, res) {
     db.query(
-      `select * from tasks where user = ${req.user.id} and year = ${req.params.year} and month = ${req.params.month};`,
+      `select * from tasks where user = ${req.user.id} and year = ${req.params.year} and month = ${req.params.month} order by time;`,
       (err, response) => {
         if (err) res.status(500).send({msg: 'something went wrong'});
         else res.send(response);

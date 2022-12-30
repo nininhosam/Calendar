@@ -8,6 +8,7 @@ routes.get('/monthTask/:year/:month', accountController.authenticateToken, taskC
 routes.post('/addTask', accountController.authenticateToken, taskController.addTask);
 routes.post('/grantTask', accountController.authenticateToken, taskController.grantTask);
 
+routes.get('/getUser/:username', accountController.authenticateToken, accountController.getUser)
 routes.post('/register', accountController.register);
 routes.post('/login', accountController.login);
 module.exports = routes;

@@ -67,6 +67,15 @@ const accountController = {
       next();
     });
   },
+  async getUser(req, res) {
+    db.query(
+      `select id, username from users where username like "${req.params.username}";`,
+      (err, response) => {
+        if (err) reject(err);
+        else res.send(response);
+      }
+    );
+  },
 };
 
 module.exports = accountController;
